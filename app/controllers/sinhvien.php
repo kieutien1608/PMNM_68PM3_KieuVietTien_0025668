@@ -1,5 +1,5 @@
 <?php
-class sinhvienController{
+class sinhvien{
     public function index(){
         echo "Đây là trang sinh viên";
     }

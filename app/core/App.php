@@ -11,7 +11,7 @@ class App
         // }
         $urlProcessed = $this->urlProcess();
         if(isset($urlProcessed[0])){
-            if(file_exists('../app/controllers/'.$urlProcess[0].'.php')){
+            if(file_exists('../app/controllers/'.$urlProcessed[0].'.php')){
                 $this->controller= $urlProcessed[0];
                 unset($urlProcessed[0]);
             }
