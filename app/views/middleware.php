@@ -1,8 +1,10 @@
 <?php
-require_once '../app/core/App.php';
+session_start();
+require_once '../app/Core/App.php';
 class middleware{
     function checkLogin(){
-        if(!isset($_SESSION['username'])){
+        $publicPage = ['/home/login'];
+        if(!isset($_SESSION['username']) && !in_array($_SERVER['REQUEST_URI'], $publicPage)){
             header('Location: /home/login');
             exit();
         }

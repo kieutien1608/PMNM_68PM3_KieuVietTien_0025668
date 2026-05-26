@@ -1,15 +1,14 @@
 <?php
 class App
 {
-    protected $controller = "home";
-    protected $action = "index";
+    protected $controller = 'home';
+    protected $action = 'index';
     protected $params = [];
+
     public function __construct()
     {
-        // if(isset($_GET['url'])){
-        //     echo ($_GET['url']);
-        // }
-        $urlProcessed = $this->urlProcess();
+        $urlProcessed = $this->UrlProcess();
+
         if (isset($urlProcessed[0])) {
             if (file_exists('../app/controllers/' . $urlProcessed[0] . '.php')) {
                 $this->controller = $urlProcessed[0];
@@ -27,7 +26,6 @@ class App
         $this->params = $urlProcessed ? array_values($urlProcessed) : [];
         call_user_func_array([$this->controller, $this->action], $this->params);
     }
-
     public function UrlProcess()
     {
         if (isset($_GET['url'])) {
