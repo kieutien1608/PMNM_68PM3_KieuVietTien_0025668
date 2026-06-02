@@ -1,16 +1,28 @@
 <?php
 require_once '../app/core/DB.php';
-class SinhvienModel {
+class sinhvienModel
+{
     private $conn;
     public function __construct()
     {
-        $this->conn = ConnectDB::Connect();
+        $this->conn = connectDB::Connect();
     }
-    public function getAllSinhvien(){
+    public function getAllSinhVien()
+    {
         $query = "SELECT * FROM tbl_sinhviens";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function create($data)
+    {
+        $query = "INSERT INTO tbl_sinhviens (hoten, gioitinh, mssv) VALUES (:hoten, :gioitinh, :mssv)";
+        $stmt = $this->conn->prepare($query);
+        if ($stmt->execute($data)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 ?>
