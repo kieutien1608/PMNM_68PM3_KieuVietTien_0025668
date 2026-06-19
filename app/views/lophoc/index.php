@@ -137,3 +137,4 @@ function sortIcon(string $col, string $currentSort, string $currentSortDir): str
     </div>
   </div>
 </div>
+
